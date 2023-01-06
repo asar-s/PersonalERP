@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koi-K4-6ry">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="koi-K4-6ry">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1313,7 +1313,7 @@
                                 <rect key="frame" x="0.0" y="148" width="375" height="1752"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iL7-dy-nJb">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1795"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1794"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgJ-CW-ObM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
@@ -1433,17 +1433,22 @@
                                                     <constraint firstItem="T21-kr-jYI" firstAttribute="leading" secondItem="LgJ-CW-ObM" secondAttribute="leading" constant="20" id="jZ7-K6-Z1T"/>
                                                     <constraint firstAttribute="bottom" secondItem="T21-kr-jYI" secondAttribute="bottom" constant="20" id="zBI-vq-VND"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Glv-dQ-BiO"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZp-4D-acz">
-                                                <rect key="frame" x="0.0" y="250" width="375" height="238"/>
+                                                <rect key="frame" x="0.0" y="250" width="375" height="237.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAf-oJ-ouP">
-                                                        <rect key="frame" x="25" y="18" width="325" height="15"/>
+                                                        <rect key="frame" x="25" y="18" width="325" height="14.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Product Information">
                                                                 <attributes>
                                                                     <color key="NSColor" name="appText"/>
-                                                                    <font key="NSFont" size="12" name="Montserrat-Regular"/>
+                                                                    <font key="NSFont" metaFont="cellTitle"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -1451,7 +1456,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="x2g-pK-ogM">
-                                                        <rect key="frame" x="25" y="42" width="325" height="196"/>
+                                                        <rect key="frame" x="25" y="41.5" width="325" height="196"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search your product" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuI-FP-vcb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="34"/>
@@ -1545,22 +1550,22 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w21-nV-9Oz">
-                                                <rect key="frame" x="0.0" y="488" width="375" height="400"/>
+                                                <rect key="frame" x="0.0" y="487.5" width="375" height="399.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBq-yC-XZG">
-                                                        <rect key="frame" x="25" y="18" width="325" height="15"/>
+                                                        <rect key="frame" x="25" y="18" width="325" height="14.5"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Item Information">
                                                                 <attributes>
                                                                     <color key="NSColor" name="appText"/>
-                                                                    <font key="NSFont" size="12" name="Montserrat-Regular"/>
+                                                                    <font key="NSFont" metaFont="cellTitle"/>
                                                                 </attributes>
                                                             </fragment>
                                                         </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Guw-in-Uvf">
-                                                        <rect key="frame" x="25" y="42" width="325" height="358"/>
+                                                        <rect key="frame" x="25" y="41.5" width="325" height="358"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search your product" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TGD-08-4RS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="325" height="34"/>
@@ -1714,7 +1719,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSN-sO-y6d">
-                                                <rect key="frame" x="0.0" y="888" width="375" height="400"/>
+                                                <rect key="frame" x="0.0" y="887" width="375" height="400"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dP-wb-Q5S">
                                                         <rect key="frame" x="25" y="18" width="325" height="15"/>
@@ -1880,7 +1885,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofe-FY-1ab">
-                                                <rect key="frame" x="25" y="1316" width="325" height="298.5"/>
+                                                <rect key="frame" x="25" y="1315" width="325" height="298.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="table" translatesAutoresizingMaskIntoConstraints="NO" id="hfl-WQ-ZZs">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="298.5"/>
@@ -1896,7 +1901,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzX-6Q-Kwt">
-                                                <rect key="frame" x="279" y="1630.5" width="71" height="27"/>
+                                                <rect key="frame" x="279" y="1629.5" width="71" height="27"/>
                                                 <color key="backgroundColor" name="appYellow"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="71" id="1kF-zj-9vF"/>
@@ -1916,7 +1921,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IeN-pu-Btg">
-                                                <rect key="frame" x="56.5" y="1702.5" width="262.5" height="41"/>
+                                                <rect key="frame" x="56.5" y="1701.5" width="262.5" height="41"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEf-6G-bA4">
                                                         <rect key="frame" x="0.0" y="0.0" width="262.5" height="41"/>
@@ -1956,7 +1961,7 @@
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gha-RM-clN">
-                                                <rect key="frame" x="20" y="250" width="335" height="468"/>
+                                                <rect key="frame" x="20" y="250" width="335" height="467.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Customer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-L1-ccK">
                                                         <rect key="frame" x="18" y="17" width="299" height="15"/>
@@ -2064,7 +2069,7 @@
                                                                     <attributedString key="attributedTitle">
                                                                         <fragment content="Cancel">
                                                                             <attributes>
-                                                                                <font key="NSFont" size="14" name="Montserrat-SemiBold"/>
+                                                                                <font key="NSFont" metaFont="system" size="14"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                 <integer key="NSUnderline" value="1"/>
                                                                             </attributes>
@@ -2174,6 +2179,7 @@
                             <constraint firstItem="8vj-xg-k4h" firstAttribute="trailing" secondItem="VxC-08-Pe1" secondAttribute="trailing" id="QmZ-Ow-ar2"/>
                             <constraint firstItem="6Ef-xz-b0R" firstAttribute="bottom" secondItem="VxC-08-Pe1" secondAttribute="bottom" id="VDf-jr-pZn"/>
                             <constraint firstItem="0Ks-vg-ame" firstAttribute="top" secondItem="8vj-xg-k4h" secondAttribute="bottom" constant="18" id="WzG-iN-aMd"/>
+                            <constraint firstItem="LgJ-CW-ObM" firstAttribute="height" secondItem="yAz-gv-XkI" secondAttribute="height" multiplier="0.131579" id="bYb-dY-dg0"/>
                             <constraint firstItem="8vj-xg-k4h" firstAttribute="leading" secondItem="VxC-08-Pe1" secondAttribute="leading" id="d7h-gN-aqx"/>
                             <constraint firstItem="8vj-xg-k4h" firstAttribute="top" secondItem="yAz-gv-XkI" secondAttribute="top" id="jTt-ns-uxi"/>
                             <constraint firstItem="6Ef-xz-b0R" firstAttribute="leading" secondItem="VxC-08-Pe1" secondAttribute="leading" id="mq4-UT-7Jq"/>
@@ -2253,7 +2259,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="car" width="288" height="288"/>
         <image name="items" width="16" height="16"/>
         <image name="label" width="15" height="15"/>

@@ -14,7 +14,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let email = "mariuslenovos@gmail.com".trim()
+        let pass = "Marius@1234".trim()
+        tfEmail.text = email
+        tfPassword.text = pass
         // Do any additional setup after loading the view.
     }
     
@@ -30,6 +33,17 @@ class LoginViewController: UIViewController {
             tfPassword.addImage(direction: .Right, image: imagePassword, imageFrame: CGRect(x: 5, y: 10, width: 15, height: 15))
         }
         textFieldAlert(tfEmail); textFieldAlert(tfPassword)
+        setupLoginAPI()
+    }
+    
+    func setupLoginAPI() {
+        guard let email = tfEmail.text , let pass = tfPassword.text else {return}
+        APIService.loginAPI(email: email, password: pass)
     }
 }
 
+extension String {
+    func trim() -> String {
+    return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+   }
+}

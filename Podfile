@@ -7,5 +7,6 @@ target 'ERP' do
 
   # Pods for ERP
  pod 'iOSDropDown'
+ pod 'NVActivityIndicatorView'
 
 end
