@@ -28,7 +28,7 @@ public func ShowLoaderWithMessage(message:String) {
 //    return AIReachabilityManager.sharedManager.isInternetAvailableForAllNetworks()
 //}
 //func SHOW_INTERNET_ALERT(){
-//    HIDE_CUSTOM_LOADER()
+//    //HIDE_CUSTOM_LOADER()
 //    HIDE_NETWORK_ACTIVITY_INDICATOR()
     
   //  displayAlertWithTitle(APP_NAME, andMessage: "Please check your internet connection and try again.", buttons: ["Dismiss"], completion: nil)

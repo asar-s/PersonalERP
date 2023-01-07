@@ -29,7 +29,7 @@ class Networking {
     let session = URLSession.shared
     
     public func postLoginRequest<T: Decodable>(_ apiName: String, parameters: [String:Any]? = nil, completion: @escaping(_ response: T?) -> Void) {
-        SHOW_CUSTOM_LOADER()
+        //SHOW_CUSTOM_LOADER()
         let userURL = Constants.baseUrl + apiName
         let Url = String(format: userURL)
         guard let serviceUrl = URL(string: Url) else { return }
@@ -44,7 +44,7 @@ class Networking {
         print("Parameters: ", parameters as Any)
         
         let dataTask = session.dataTask(with: request) { data, response, error in
-            HIDE_CUSTOM_LOADER()
+            //HIDE_CUSTOM_LOADER()
             guard let jsonData = data else {
                 completion(nil)
                 return
@@ -69,7 +69,7 @@ class Networking {
     }
     
     public func postRequest<T: Decodable>(_ apiName: String, parameters: [String:Any]? = nil, completion: @escaping(_ response: T?) -> Void) {
-        SHOW_CUSTOM_LOADER()
+        //SHOW_CUSTOM_LOADER()
         let userURL = Constants.baseUrl + apiName
         let Url = String(format: userURL)
         guard let serviceUrl = URL(string: Url) else { return }
@@ -85,7 +85,7 @@ class Networking {
         print("Parameters: ", parameters as Any)
         
         let dataTask = session.dataTask(with: request) { data, response, error in
-            HIDE_CUSTOM_LOADER()
+            //HIDE_CUSTOM_LOADER()
             guard let jsonData = data else {
                 completion(nil)
                 return
@@ -113,7 +113,7 @@ class Networking {
     
     
     public func getRequest<T: Decodable>(_ apiName: String, parameters: [String:Any]? = nil, completion: @escaping(_ response: T?) -> Void) {
-        SHOW_CUSTOM_LOADER()
+        //SHOW_CUSTOM_LOADER()
         
         let userURL = Constants.baseUrl + apiName
         
@@ -125,7 +125,7 @@ class Networking {
         request.addValue(Constants.token, forHTTPHeaderField: "token")
         
         let dataTask = session.dataTask(with: request) { data, response, error in
-            HIDE_CUSTOM_LOADER()
+            //HIDE_CUSTOM_LOADER()
             guard let jsonData = data else {
                 completion(nil)
                 return
