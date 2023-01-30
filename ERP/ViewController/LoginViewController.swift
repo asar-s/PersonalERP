@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class LoginViewController: UIViewController {
     // MARK: - IBOutlets
@@ -14,8 +15,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let email = "mariuslenovos@gmail.com".trim()
-        let pass = "Marius@1234".trim()
+        let email = "jahanzaib@eliteapps.com.pk".trim()
+        let pass = "12345678".trim()
         tfEmail.text = email
         tfPassword.text = pass
         // Do any additional setup after loading the view.
@@ -24,7 +25,6 @@ class LoginViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func LoginAction(_ sender: Any) {
         setupTextField()
-        pushController(controller: .home, storyboard: .main)
     }
     
     func setupTextField() {
@@ -38,7 +38,16 @@ class LoginViewController: UIViewController {
     
     func setupLoginAPI() {
         guard let email = tfEmail.text , let pass = tfPassword.text else {return}
-        APIService.loginAPI(email: email, password: pass)
+        HUD.show(.progress)
+        Service.login(with: email, and: pass) { data, error in
+            if let response = data, let userData = response.data {
+                HUD.flash(.success, delay: 0.5)
+                LoginData.shared = userData
+                self.pushController(controller: .home, storyboard: .main)
+            } else {
+                HUD.flash(.labeledError(title: nil, subtitle: error?.body ?? "Somethig went wrong"), delay: 1)
+            }
+        }
     }
 }
 

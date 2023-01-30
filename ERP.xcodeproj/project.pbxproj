@@ -10,7 +10,6 @@
 		185FCEFF296148E6003B8008 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185FCEFE296148E6003B8008 /* Login.swift */; };
 		18BCC23B295C91DB006DD870 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC23A295C91DB006DD870 /* UITextFieldExtension.swift */; };
 		18BCC24A295C9432006DD870 /* GenericModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC241295C9432006DD870 /* GenericModel.swift */; };
-		18BCC261295C94A4006DD870 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC260295C94A4006DD870 /* Networking.swift */; };
 		18BCC264295CA014006DD870 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC263295CA014006DD870 /* Constants.swift */; };
 		18BCC266295CA1F1006DD870 /* AllLoaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC265295CA1F1006DD870 /* AllLoaders.swift */; };
 		18BCC268295CA45D006DD870 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC267295CA45D006DD870 /* APIService.swift */; };
@@ -35,13 +34,16 @@
 		26B79806295327CE007A3151 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B79805295327CE007A3151 /* HomeViewController.swift */; };
 		26B798082953281F007A3151 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B798072953281F007A3151 /* PurchaseViewController.swift */; };
 		26B7980A29532843007A3151 /* SaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7980929532843007A3151 /* SaleViewController.swift */; };
+		CAD8B330298150E50011FBC1 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8B32C298150E50011FBC1 /* ApiManager.swift */; };
+		CAD8B331298150E50011FBC1 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8B32D298150E50011FBC1 /* EndPoints.swift */; };
+		CAD8B332298150E50011FBC1 /* ErrorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8B32E298150E50011FBC1 /* ErrorObject.swift */; };
+		CAD8B333298150E50011FBC1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8B32F298150E50011FBC1 /* Services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		185FCEFE296148E6003B8008 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		18BCC23A295C91DB006DD870 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		18BCC241295C9432006DD870 /* GenericModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericModel.swift; sourceTree = "<group>"; };
-		18BCC260295C94A4006DD870 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		18BCC263295CA014006DD870 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18BCC265295CA1F1006DD870 /* AllLoaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLoaders.swift; sourceTree = "<group>"; };
 		18BCC267295CA45D006DD870 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -68,6 +70,10 @@
 		26B7980929532843007A3151 /* SaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleViewController.swift; sourceTree = "<group>"; };
 		AB91D857D740C9D7A94A6E36 /* Pods-ERP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ERP.debug.xcconfig"; path = "Target Support Files/Pods-ERP/Pods-ERP.debug.xcconfig"; sourceTree = "<group>"; };
 		C171BC05E7BBC04A4CC75E0C /* Pods_ERP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ERP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD8B32C298150E50011FBC1 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		CAD8B32D298150E50011FBC1 /* EndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		CAD8B32E298150E50011FBC1 /* ErrorObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorObject.swift; sourceTree = "<group>"; };
+		CAD8B32F298150E50011FBC1 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		F9537EA22852181068889C70 /* Pods-ERP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ERP.release.xcconfig"; path = "Target Support Files/Pods-ERP/Pods-ERP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,19 +105,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		18BCC25F295C94A4006DD870 /* Services */ = {
+		18BCC25F295C94A4006DD870 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CAD8B32C298150E50011FBC1 /* ApiManager.swift */,
+				CAD8B32D298150E50011FBC1 /* EndPoints.swift */,
+				CAD8B32E298150E50011FBC1 /* ErrorObject.swift */,
+				CAD8B32F298150E50011FBC1 /* Services.swift */,
 				18BCC267295CA45D006DD870 /* APIService.swift */,
 			);
-			path = Services;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		18BCC262295C9FF9006DD870 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				18BCC263295CA014006DD870 /* Constants.swift */,
-				18BCC260295C94A4006DD870 /* Networking.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -165,7 +174,7 @@
 				18BCC262295C9FF9006DD870 /* Constants */,
 				18D11E90295DB58100089E26 /* Model */,
 				18BCC23C295C93EE006DD870 /* ViewModel */,
-				18BCC25F295C94A4006DD870 /* Services */,
+				18BCC25F295C94A4006DD870 /* Network */,
 				26B797FC295313F1007A3151 /* Helper */,
 				26686D1F29547AA000CBF2F2 /* Cell */,
 				26B7980429532743007A3151 /* ViewController */,
@@ -347,9 +356,12 @@
 				18BCC264295CA014006DD870 /* Constants.swift in Sources */,
 				26B79806295327CE007A3151 /* HomeViewController.swift in Sources */,
 				18BF60F5295D71DA0092865A /* SuppliersProductModel.swift in Sources */,
+				CAD8B332298150E50011FBC1 /* ErrorObject.swift in Sources */,
 				26686D2329547C7400CBF2F2 /* SaleSelectionCollectionViewCell.swift in Sources */,
+				CAD8B330298150E50011FBC1 /* ApiManager.swift in Sources */,
 				18BF60F9295D75D90092865A /* CategoryProductsModel.swift in Sources */,
 				26B797FE29531431007A3151 /* UIViewExtension.swift in Sources */,
+				CAD8B333298150E50011FBC1 /* Services.swift in Sources */,
 				18D11E92295DB5A500089E26 /* SavePurchaseModel.swift in Sources */,
 				26686D2129547AF400CBF2F2 /* SaleListCollectionViewCell.swift in Sources */,
 				18BCC268295CA45D006DD870 /* APIService.swift in Sources */,
@@ -358,11 +370,11 @@
 				26B797ED29530CB1007A3151 /* LoginViewController.swift in Sources */,
 				18BCC26C295CA6B2006DD870 /* SuppliersModel.swift in Sources */,
 				26B797E929530CB1007A3151 /* AppDelegate.swift in Sources */,
+				CAD8B331298150E50011FBC1 /* EndPoints.swift in Sources */,
 				18BCC24A295C9432006DD870 /* GenericModel.swift in Sources */,
 				18BCC266295CA1F1006DD870 /* AllLoaders.swift in Sources */,
 				18BF60F7295D72500092865A /* SaveCustomerModel.swift in Sources */,
 				26B798082953281F007A3151 /* PurchaseViewController.swift in Sources */,
-				18BCC261295C94A4006DD870 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

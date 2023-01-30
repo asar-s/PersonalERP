@@ -5,16 +5,15 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let status: Int?
-    let data: DataClasss?
-}
-
 // MARK: - DataClass
-struct DataClasss: Codable {
+struct LoginData: Codable {
+    
+    static var shared: LoginData = {
+        return LoginData()
+    }()
+    
     let loginToken: String?
-    let user: Users?
+    let user: UserData?
     let todaySales: Double?
     let todayPurchase: Int?
 
@@ -24,15 +23,30 @@ struct DataClasss: Codable {
         case todaySales = "today_sales"
         case todayPurchase = "today_purchase"
     }
+    
+    init() {
+        self.loginToken = ""
+        self.user = UserData()
+        self.todaySales = 0
+        self.todayPurchase = 0
+    }
+    
 }
 
 // MARK: - User
-struct Users: Codable {
+struct UserData: Codable {
+    
     let firstName, lastName, profileImage: String?
 
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case lastName = "last_name"
         case profileImage = "profile_image"
+    }
+    
+    init() {
+        self.firstName = ""
+        self.lastName = ""
+        self.profileImage = ""
     }
 }

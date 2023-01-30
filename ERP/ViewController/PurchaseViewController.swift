@@ -41,7 +41,7 @@ class PurchaseViewController: UIViewController {
     }
     
     func setupDropDown() {
-          setupAPI()
+//          setupAPI()
         
         updateDropdown(tfSupplier, dropdownData: myData)
         updateDropdown(tfPaymentType, dropdownData: myData)
@@ -52,15 +52,16 @@ class PurchaseViewController: UIViewController {
     func setupTextField() {
         textFieldAlert(tfSupplier); textFieldAlert(tfInvoice); textFieldAlert(tfPaymentType); textFieldAlert(tfPurchaseDate); textFieldAlert(tfProductName); textFieldAlert(tfStock); textFieldAlert(tfQuantity); textFieldAlert(tfRate)
     }
-    func setupAPI() {
-        
-        APIService.suuppliersAPI() { data in
-            self.viewModel = data
-            
-        }
-            
-        
-    }
+    
+//    func setupAPI() {
+//
+//        APIService.suuppliersAPI() { data in
+//            self.viewModel = data
+//
+//        }
+//
+//
+//    }
     
     // MARK: - Action
     @IBAction func backAction(_ sender: Any) {

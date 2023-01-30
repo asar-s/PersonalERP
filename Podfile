@@ -4,9 +4,11 @@
 target 'ERP' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for ERP
- pod 'iOSDropDown'
- pod 'NVActivityIndicatorView'
-
+  pod 'Alamofire'
+  pod 'iOSDropDown'
+  pod 'NVActivityIndicatorView'
+  pod 'PKHUD'
+  
 end
