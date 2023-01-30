@@ -26,38 +26,43 @@ struct Service {
         }
     }
     
-//    static func search(with search: String, handler: @escaping (_ user: [User]?, _ error: AlertMessage?)->()) {
-//        let params = ["search": search,
-//                      "id": User.decoded()?.id ?? 0] as? [String: Any]
-//        APIManager.shared().call(type: EndpointItem.search, params: params) { (response: BaseResponse<[User]>?, message: AlertMessage?) in
-//            if let response = response {
-//                if response.isThereApiError() {
-//                    handler(nil, AlertMessage(title: "Oops!", body: response.message ?? "Something went wrong"))
-//                    return
-//                } else {
-//                    handler(response.response, nil)
-//                }
-//            } else {
-//                handler(nil, message!)
-//            }
-//        }
-//    }
-//    
-//    static func fetchNotifications(handler: @escaping (_ user: [NotificationsModel]?, _ error: AlertMessage?)->()) {
-//        let params = ["id": User.decoded()?.id ?? 0] as? [String: Any]
-//        APIManager.shared().call(type: EndpointItem.notifications, params: params) { (response: BaseResponse<[NotificationsModel]>?, message: AlertMessage?) in
-//            if let response = response {
-//                if response.isThereApiError() {
-//                    handler(nil, AlertMessage(title: "Oops!", body: response.message ?? "Something went wrong"))
-//                    return
-//                } else {
-//                    handler(response.response, nil)
-//                }
-//            } else {
-//                handler(nil, message!)
-//            }
-//        }
-//    }
+    static func fetchCategories(with search: String = "", handler: @escaping (_ categories: [ListItem]?, _ error: AlertMessage?)->()) {
+        var params: [String: Any] = [:]
+        if search != "" {
+            params = ["search_key": search] as [String: Any]
+        }
+        APIManager.shared().call(type: EndpointItem.categories, params: params) { (response: BaseResponse<[ListItem]>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(response.data, nil)
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
+    
+    static func fetchSupliers(with search: String = "", handler: @escaping (_ supliers: [ListItem]?, _ error: AlertMessage?)->()) {
+        var params: [String: Any] = [:]
+        if search != "" {
+            params = ["search_key": search] as [String: Any]
+        }
+        APIManager.shared().call(type: EndpointItem.suppliers, params: params) { (response: BaseResponse<[ListItem]>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(response.data, nil)
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
 //    
 //    static func friendRequest(type: ConnectionStatus, to userId: Int, handler: @escaping (_ success: Bool, _ error: AlertMessage?)->()) {
 //        let params = ["UserId":  User.decoded()?.id ?? 0,

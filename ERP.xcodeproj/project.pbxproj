@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		185FCEFF296148E6003B8008 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185FCEFE296148E6003B8008 /* Login.swift */; };
 		18BCC23B295C91DB006DD870 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC23A295C91DB006DD870 /* UITextFieldExtension.swift */; };
-		18BCC24A295C9432006DD870 /* GenericModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC241295C9432006DD870 /* GenericModel.swift */; };
 		18BCC264295CA014006DD870 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC263295CA014006DD870 /* Constants.swift */; };
-		18BCC266295CA1F1006DD870 /* AllLoaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC265295CA1F1006DD870 /* AllLoaders.swift */; };
 		18BCC268295CA45D006DD870 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC267295CA45D006DD870 /* APIService.swift */; };
-		18BCC26A295CA67B006DD870 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC269295CA67B006DD870 /* LoginModel.swift */; };
 		18BCC26C295CA6B2006DD870 /* SuppliersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCC26B295CA6B1006DD870 /* SuppliersModel.swift */; };
 		18BF60F5295D71DA0092865A /* SuppliersProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF60F4295D71DA0092865A /* SuppliersProductModel.swift */; };
 		18BF60F7295D72500092865A /* SaveCustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF60F6295D72500092865A /* SaveCustomerModel.swift */; };
@@ -38,16 +35,14 @@
 		CAD8B331298150E50011FBC1 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8B32D298150E50011FBC1 /* EndPoints.swift */; };
 		CAD8B332298150E50011FBC1 /* ErrorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8B32E298150E50011FBC1 /* ErrorObject.swift */; };
 		CAD8B333298150E50011FBC1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD8B32F298150E50011FBC1 /* Services.swift */; };
+		CAE58D2E29886881007665D5 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE58D2D29886881007665D5 /* ListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		185FCEFE296148E6003B8008 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		18BCC23A295C91DB006DD870 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
-		18BCC241295C9432006DD870 /* GenericModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericModel.swift; sourceTree = "<group>"; };
 		18BCC263295CA014006DD870 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		18BCC265295CA1F1006DD870 /* AllLoaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLoaders.swift; sourceTree = "<group>"; };
 		18BCC267295CA45D006DD870 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		18BCC269295CA67B006DD870 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		18BCC26B295CA6B1006DD870 /* SuppliersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersModel.swift; sourceTree = "<group>"; };
 		18BF60F4295D71DA0092865A /* SuppliersProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliersProductModel.swift; sourceTree = "<group>"; };
 		18BF60F6295D72500092865A /* SaveCustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCustomerModel.swift; sourceTree = "<group>"; };
@@ -74,6 +69,7 @@
 		CAD8B32D298150E50011FBC1 /* EndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		CAD8B32E298150E50011FBC1 /* ErrorObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorObject.swift; sourceTree = "<group>"; };
 		CAD8B32F298150E50011FBC1 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		CAE58D2D29886881007665D5 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		F9537EA22852181068889C70 /* Pods-ERP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ERP.release.xcconfig"; path = "Target Support Files/Pods-ERP/Pods-ERP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,13 +125,12 @@
 			isa = PBXGroup;
 			children = (
 				18D11E91295DB5A500089E26 /* SavePurchaseModel.swift */,
-				18BCC241295C9432006DD870 /* GenericModel.swift */,
-				18BCC269295CA67B006DD870 /* LoginModel.swift */,
 				18BCC26B295CA6B1006DD870 /* SuppliersModel.swift */,
 				18BF60F4295D71DA0092865A /* SuppliersProductModel.swift */,
 				18BF60F6295D72500092865A /* SaveCustomerModel.swift */,
 				18BF60F8295D75D90092865A /* CategoryProductsModel.swift */,
 				185FCEFE296148E6003B8008 /* Login.swift */,
+				CAE58D2D29886881007665D5 /* ListItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,7 +183,6 @@
 		26B797FC295313F1007A3151 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				18BCC265295CA1F1006DD870 /* AllLoaders.swift */,
 				26B797FD29531431007A3151 /* UIViewExtension.swift */,
 				18BCC23A295C91DB006DD870 /* UITextFieldExtension.swift */,
 			);
@@ -355,6 +349,7 @@
 				26B7980A29532843007A3151 /* SaleViewController.swift in Sources */,
 				18BCC264295CA014006DD870 /* Constants.swift in Sources */,
 				26B79806295327CE007A3151 /* HomeViewController.swift in Sources */,
+				CAE58D2E29886881007665D5 /* ListItem.swift in Sources */,
 				18BF60F5295D71DA0092865A /* SuppliersProductModel.swift in Sources */,
 				CAD8B332298150E50011FBC1 /* ErrorObject.swift in Sources */,
 				26686D2329547C7400CBF2F2 /* SaleSelectionCollectionViewCell.swift in Sources */,
@@ -366,13 +361,10 @@
 				26686D2129547AF400CBF2F2 /* SaleListCollectionViewCell.swift in Sources */,
 				18BCC268295CA45D006DD870 /* APIService.swift in Sources */,
 				18BCC23B295C91DB006DD870 /* UITextFieldExtension.swift in Sources */,
-				18BCC26A295CA67B006DD870 /* LoginModel.swift in Sources */,
 				26B797ED29530CB1007A3151 /* LoginViewController.swift in Sources */,
 				18BCC26C295CA6B2006DD870 /* SuppliersModel.swift in Sources */,
 				26B797E929530CB1007A3151 /* AppDelegate.swift in Sources */,
 				CAD8B331298150E50011FBC1 /* EndPoints.swift in Sources */,
-				18BCC24A295C9432006DD870 /* GenericModel.swift in Sources */,
-				18BCC266295CA1F1006DD870 /* AllLoaders.swift in Sources */,
 				18BF60F7295D72500092865A /* SaveCustomerModel.swift in Sources */,
 				26B798082953281F007A3151 /* PurchaseViewController.swift in Sources */,
 			);

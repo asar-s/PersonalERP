@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class HomeViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        fetchStaticData()
     }
     // MARK: - Action
     @IBAction func addSalesAction(_ sender: Any) {
@@ -31,4 +32,28 @@ class HomeViewController: UIViewController {
     @IBAction func sideMenuAction(_ sender: Any) {
     }
     // MARK: - Navigation
+    
+    func fetchStaticData() {
+        
+        HUD.show(.progress)
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        Service.fetchCategories { categories, error in
+            dispatchGroup.leave()
+            if error == nil, let cats = categories {
+                ListItem.categories = cats
+            }
+        }
+        dispatchGroup.enter()
+        Service.fetchSupliers { supliers, error in
+            dispatchGroup.leave()
+            if error == nil, let sups = supliers {
+                ListItem.supliers = sups
+            }
+        }
+        dispatchGroup.notify(queue: .main) {
+            HUD.hide()
+        }
+    }
 }

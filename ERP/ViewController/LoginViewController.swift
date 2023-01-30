@@ -15,8 +15,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let email = "jahanzaib@eliteapps.com.pk".trim()
-        let pass = "12345678".trim()
+        
+        let email = "jahanzaib@eliteapps.com.pk"
+        let pass = "12345678"
         tfEmail.text = email
         tfPassword.text = pass
         // Do any additional setup after loading the view.
@@ -32,12 +33,13 @@ class LoginViewController: UIViewController {
             tfEmail.addImage(direction: .Right, image: imageEmail, imageFrame: CGRect(x: 5, y: 10, width: 15, height: 15))
             tfPassword.addImage(direction: .Right, image: imagePassword, imageFrame: CGRect(x: 5, y: 10, width: 15, height: 15))
         }
-        textFieldAlert(tfEmail); textFieldAlert(tfPassword)
+        textFieldAlert(tfEmail)
+        textFieldAlert(tfPassword)
         setupLoginAPI()
     }
     
     func setupLoginAPI() {
-        guard let email = tfEmail.text , let pass = tfPassword.text else {return}
+        guard let email = tfEmail.text?.trim() , let pass = tfPassword.text else {return}
         HUD.show(.progress)
         Service.login(with: email, and: pass) { data, error in
             if let response = data, let userData = response.data {

@@ -97,7 +97,7 @@ class APIService: NSObject {
 //        "phone": phone,
 //        "address" : address
 //    ] as! [String: Any]
-//    Networking.sharedInstance.postRequest(ApiEndPoints.saveCustomer.rawValue, parameters: param, completion: {(respone: GenericModel<SaveCustomerModel>?) in
+//    Networking.sharedInstance.postRequest(ApiEndPoints.saveCustomer.rawValue, parameters: param, completion: {(respone: GenericModel<ItemModel>?) in
 //        guard let response = respone else {return}
 //        if response.status == 200 {
 //            let dataModel = respone?.data
@@ -126,7 +126,7 @@ class APIService: NSObject {
 //            "supplier_id": supplier_id,
 //            "search_key" : "searchKey"
 //        ] as! [String: Any]
-//        Networking.sharedInstance.postRequest(ApiEndPoints.savePurchase.rawValue, parameters: param, completion: {(respone: GenericModel<SaveCustomerModel>?) in
+//        Networking.sharedInstance.postRequest(ApiEndPoints.savePurchase.rawValue, parameters: param, completion: {(respone: GenericModel<ItemModel>?) in
 //            guard let response = respone else {return}
 //            if response.status == 200 {
 //                let dataModel = respone?.data
@@ -139,7 +139,7 @@ class APIService: NSObject {
 //            "supplier_id": supplierID,
 //            "search_key" : searchKey
 //        ] as! [String: Any]
-//        Networking.sharedInstance.postRequest(ApiEndPoints.savePOS.rawValue, parameters: param, completion: {(respone: GenericModel<SaveCustomerModel>?) in
+//        Networking.sharedInstance.postRequest(ApiEndPoints.savePOS.rawValue, parameters: param, completion: {(respone: GenericModel<ItemModel>?) in
 //            guard let response = respone else {return}
 //            if response.status == 200 {
 //                let dataModel = respone?.data

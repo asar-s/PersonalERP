@@ -5,7 +5,27 @@
 
 import Foundation
 
-// MARK: - DataClass
+struct BaseResponse<T: Codable>: Codable {
+    
+    let data : T?
+    let status : Int?
+    let error : String?
+
+    enum CodingKeys: String, CodingKey {
+        case data
+        case error
+        case status = "status"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        status = try values.decodeIfPresent(Int.self, forKey: .status)
+        error = try values.decodeIfPresent(String.self, forKey: .error)
+        data = try values.decodeIfPresent(T.self, forKey: .data)
+    }
+
+}
+
 struct LoginData: Codable {
     
     static var shared: LoginData = {
