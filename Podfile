@@ -8,7 +8,6 @@ target 'ERP' do
   # Pods for ERP
   pod 'Alamofire'
   pod 'iOSDropDown'
-  pod 'NVActivityIndicatorView'
   pod 'PKHUD'
   
 end
