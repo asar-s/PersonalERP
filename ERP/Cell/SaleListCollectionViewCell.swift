@@ -8,8 +8,14 @@
 import UIKit
 
 class SaleListCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var lblList: UILabel!
     @IBOutlet weak var btnList: UIButton!
+    
+    func configure(with name: String) {
+        self.lblList.preferredMaxLayoutWidth = 50
+        self.lblList.text = name
+    }
     
     @IBAction func ListAction(_ sender: Any) {
     }

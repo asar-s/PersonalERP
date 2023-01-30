@@ -1224,10 +1224,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ks-vg-ame">
-                                <rect key="frame" x="20" y="104" width="355" height="20"/>
+                                <rect key="frame" x="20" y="104" width="355" height="25"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ygi-WU-3Kx">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yTi-EO-Gfo">
                                             <size key="itemSize" width="128" height="128"/>
@@ -1237,7 +1237,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SaleListCollectionViewCell" id="V7e-Ep-QJj" customClass="SaleListCollectionViewCell" customModule="ERP" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-2.5" width="87" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="87" height="25"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9nd-aD-ZBV">
                                                     <rect key="frame" x="0.0" y="0.0" width="87" height="25"/>
@@ -1247,31 +1247,19 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="87" height="25"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Electronics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAw-Ce-wfw">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="87" height="25"/>
-                                                                    <color key="backgroundColor" name="appText"/>
+                                                                    <rect key="frame" x="8" y="4" width="71" height="17"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                                     <color key="textColor" name="appWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdQ-f7-BbN">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="87" height="25"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                    <connections>
-                                                                        <action selector="ListAction:" destination="V7e-Ep-QJj" eventType="touchUpInside" id="rLJ-Ap-ZG7"/>
-                                                                    </connections>
-                                                                </button>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" name="appText"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="YdQ-f7-BbN" secondAttribute="trailing" id="5Ih-PS-hot"/>
-                                                                <constraint firstItem="YdQ-f7-BbN" firstAttribute="leading" secondItem="ypb-8E-vBy" secondAttribute="leading" id="70k-k2-9Jd"/>
-                                                                <constraint firstItem="YdQ-f7-BbN" firstAttribute="top" secondItem="ypb-8E-vBy" secondAttribute="top" id="CRA-RJ-Dac"/>
-                                                                <constraint firstItem="EAw-Ce-wfw" firstAttribute="leading" secondItem="ypb-8E-vBy" secondAttribute="leading" id="Quh-XK-Gi1"/>
-                                                                <constraint firstItem="EAw-Ce-wfw" firstAttribute="top" secondItem="ypb-8E-vBy" secondAttribute="top" id="YST-vL-wO2"/>
-                                                                <constraint firstAttribute="bottom" secondItem="YdQ-f7-BbN" secondAttribute="bottom" id="akT-nK-U3O"/>
-                                                                <constraint firstAttribute="trailing" secondItem="EAw-Ce-wfw" secondAttribute="trailing" id="b8Q-7l-KMy"/>
-                                                                <constraint firstAttribute="bottom" secondItem="EAw-Ce-wfw" secondAttribute="bottom" id="f2l-XV-57K"/>
+                                                                <constraint firstItem="EAw-Ce-wfw" firstAttribute="leading" secondItem="ypb-8E-vBy" secondAttribute="leading" constant="8" id="Quh-XK-Gi1"/>
+                                                                <constraint firstItem="EAw-Ce-wfw" firstAttribute="top" secondItem="ypb-8E-vBy" secondAttribute="top" constant="4" id="YST-vL-wO2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="EAw-Ce-wfw" secondAttribute="trailing" constant="8" id="b8Q-7l-KMy"/>
+                                                                <constraint firstAttribute="bottom" secondItem="EAw-Ce-wfw" secondAttribute="bottom" constant="4" id="f2l-XV-57K"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1295,7 +1283,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <outlet property="btnList" destination="YdQ-f7-BbN" id="BHQ-ba-coh"/>
                                                     <outlet property="lblList" destination="EAw-Ce-wfw" id="5Rk-vX-JZk"/>
                                                 </connections>
                                             </collectionViewCell>
@@ -1313,7 +1300,7 @@
                                     <constraint firstAttribute="height" constant="50" id="WAR-QP-fZq"/>
                                     <constraint firstItem="Ygi-WU-3Kx" firstAttribute="leading" secondItem="0Ks-vg-ame" secondAttribute="leading" id="bI3-Tv-Lyt"/>
                                     <constraint firstAttribute="trailing" secondItem="Ygi-WU-3Kx" secondAttribute="trailing" id="mKd-kA-oGS"/>
-                                    <constraint firstAttribute="height" constant="20" id="tmc-w8-i5g"/>
+                                    <constraint firstAttribute="height" constant="25" id="tmc-w8-i5g"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1322,7 +1309,7 @@
                                 </variation>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ef-xz-b0R">
-                                <rect key="frame" x="0.0" y="134" width="375" height="1766"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="1761"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iL7-dy-nJb">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1794"/>

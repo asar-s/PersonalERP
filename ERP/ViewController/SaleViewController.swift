@@ -48,7 +48,9 @@ class SaleViewController: UIViewController {
         super.viewDidLoad()
         setupTextFieldRight()
         
-        // Do any additional setup after loading the view.
+        if let flowLayout = self.ListCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSizeMake(1, 1)
+        }
     }
     
     
@@ -102,12 +104,13 @@ class SaleViewController: UIViewController {
 extension SaleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == ListCollectionView ? 10 : 20
+        return collectionView == ListCollectionView ? ListItem.categories.count : 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == ListCollectionView  {
             let cellList = collectionView.dequeueReusableCell(withReuseIdentifier: "SaleListCollectionViewCell", for: indexPath) as! SaleListCollectionViewCell
+            cellList.configure(with: ListItem.categories[indexPath.row].name ?? "")
             return cellList
         } else {
             let cellSelection = collectionView.dequeueReusableCell(withReuseIdentifier: "SaleSelectionCollectionViewCell", for: indexPath) as! SaleSelectionCollectionViewCell
@@ -116,8 +119,11 @@ extension SaleViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width
-        return collectionView == ListCollectionView  ? CGSize(width: width/4, height: 22) : CGSize(width: width/4, height: width/4)
+        if collectionView == selectionCollectionView {
+            let width = collectionView.frame.size.width
+            return CGSize(width: width/4, height: width/4)
+        }
+        return CGSize()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
