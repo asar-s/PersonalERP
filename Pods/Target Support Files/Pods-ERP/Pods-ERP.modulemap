@@ -1,6 +1,0 @@
-framework module Pods_ERP {
-  umbrella header "Pods-ERP-umbrella.h"
-
-  export *
-  module * { export * }
-}
