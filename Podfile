@@ -9,5 +9,6 @@ target 'ERP' do
   pod 'Alamofire'
   pod 'iOSDropDown'
   pod 'PKHUD'
+  pod 'Kingfisher'
   
 end

@@ -8,7 +8,7 @@
 import UIKit
 import PKHUD
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - IBOutlets
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
@@ -50,6 +50,11 @@ class LoginViewController: UIViewController {
                 HUD.flash(.labeledError(title: nil, subtitle: error?.body ?? "Somethig went wrong"), delay: 1)
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 

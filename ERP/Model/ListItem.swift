@@ -19,6 +19,8 @@ struct ListItem : Codable {
     
     let id : Int?
     let name : String?
+    
+    var isSelected = false
 
     enum CodingKeys: String, CodingKey {
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class SaleViewController: UIViewController {
     
@@ -40,6 +41,10 @@ class SaleViewController: UIViewController {
     //CollectionView
     @IBOutlet weak var ListCollectionView: UICollectionView!
     @IBOutlet weak var selectionCollectionView: UICollectionView!
+    @IBOutlet weak var selectionCVHeight: NSLayoutConstraint!
+    
+    var selectedIndex = -1
+    var products = [ProductModel]()
     
     // MARK: - Variables
     var counterValue = 1
@@ -51,6 +56,8 @@ class SaleViewController: UIViewController {
         if let flowLayout = self.ListCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSizeMake(1, 1)
         }
+        
+        selectionCVHeight.constant = 0
     }
     
     
@@ -104,16 +111,37 @@ class SaleViewController: UIViewController {
 extension SaleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == ListCollectionView ? ListItem.categories.count : 20
+        return collectionView == ListCollectionView ? ListItem.categories.count : products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == ListCollectionView  {
             let cellList = collectionView.dequeueReusableCell(withReuseIdentifier: "SaleListCollectionViewCell", for: indexPath) as! SaleListCollectionViewCell
-            cellList.configure(with: ListItem.categories[indexPath.row].name ?? "")
+            if indexPath.row == selectedIndex {
+                cellList.configure(with: ListItem.categories[indexPath.row].name ?? "", isSelected: true)
+            } else {
+                cellList.configure(with: ListItem.categories[indexPath.row].name ?? "", isSelected: false)
+            }
+            cellList.onClick = {
+                self.selectedIndex = indexPath.row
+                self.ListCollectionView.reloadData()
+                HUD.show(.progress)
+                Service.fetchCategoryProducts(with: ListItem.categories[indexPath.row].id ?? 0) { categories, error in
+                    HUD.hide()
+                    if error != nil {
+                        HUD.flash(.labeledError(title: nil, subtitle: error?.body ?? "Something went wrong."))
+                        self.selectionCVHeight.constant = 0
+                    } else if let products = categories {
+                        self.products = products
+                        self.selectionCollectionView.reloadData()
+                        self.selectionCVHeight.constant = products.count > 0 ? 120 : 0
+                    }
+                }
+            }
             return cellList
         } else {
             let cellSelection = collectionView.dequeueReusableCell(withReuseIdentifier: "SaleSelectionCollectionViewCell", for: indexPath) as! SaleSelectionCollectionViewCell
+            cellSelection.configure(with: products[indexPath.row])
             return cellSelection
         }
     }
@@ -121,17 +149,18 @@ extension SaleViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == selectionCollectionView {
             let width = collectionView.frame.size.width
-            return CGSize(width: width/4, height: width/4)
+            return CGSize(width: width/3.5, height: 120)
         }
-        return CGSize()
+        return CGSize(width: 20, height: 25)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! SaleSelectionCollectionViewCell
-        cell.ViewQuantity.isHidden = false
-        cell.lblProduct.backgroundColor = UIColor.init(named: "appBlue")
-        //counterValue += 1
-        cell.lblQuantity.text = "\(counterValue)"
-        return
+        if collectionView == selectionCollectionView {
+            let cell = collectionView.cellForItem(at: indexPath) as! SaleSelectionCollectionViewCell
+            cell.ViewQuantity.isHidden = false
+            cell.lblView.backgroundColor = UIColor(named: "appBlue")
+            cell.lblQuantity.text = "\(counterValue)"
+            return
+        }
     }
 }

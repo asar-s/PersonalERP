@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct SuppliersProductModel : Codable {
+struct ProductModel : Codable {
     let id : String?
     let name : String?
-    let price : Int?
+    let price : Double?
     let serial_no : String?
     let stock : Int?
     let image : String?
@@ -29,7 +29,7 @@ struct SuppliersProductModel : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
-        price = try values.decodeIfPresent(Int.self, forKey: .price)
+        price = try values.decodeIfPresent(Double.self, forKey: .price)
         serial_no = try values.decodeIfPresent(String.self, forKey: .serial_no)
         stock = try values.decodeIfPresent(Int.self, forKey: .stock)
         image = try values.decodeIfPresent(String.self, forKey: .image)

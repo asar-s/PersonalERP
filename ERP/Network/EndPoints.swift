@@ -111,7 +111,7 @@ extension EndpointItem: EndPointType {
         switch self {
         case .login:
             return ["x-api-key": "\(self.apiKey)"]
-        case .suppliers, .categories:
+        case .suppliers, .categories, .supplierProducts, .categoryProducts:
             return ["x-api-key": "\(self.apiKey)",
                     "token": "\(self.token)"]
         case .userExists:
