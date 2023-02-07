@@ -52,6 +52,14 @@ class HomeViewController: UIViewController {
                 ListItem.supliers = sups
             }
         }
+        dispatchGroup.enter()
+        Service.fetchCustomers(handler: { customers, error in
+            dispatchGroup.leave()
+            if error == nil, let custs = customers {
+                Customer.customers = custs
+            }
+        })
+        
         dispatchGroup.notify(queue: .main) {
             HUD.hide()
         }

@@ -95,4 +95,35 @@ struct Service {
             }
         }
     }
+    
+    static func fetchCustomers(with name: String = "", handler: @escaping (_ customers: [Customer]?, _ error: AlertMessage?)->()) {
+        let params = ["search_key": name] as [String: Any]
+        APIManager.shared().call(type: EndpointItem.customers, params: params) { (response: BaseResponse<[Customer]>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(response.data, nil)
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
+    
+    static func savePurchase(with params: [String: Any], handler: @escaping (_ message: AlertMessage?, _ error: AlertMessage?)->()) {
+        APIManager.shared().call(type: EndpointItem.customers, params: params) { (response: BaseResponse<[EmptyResponse]>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(AlertMessage(title: "ERP", body: response.message ?? "Something went wrong"), nil)
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
 }

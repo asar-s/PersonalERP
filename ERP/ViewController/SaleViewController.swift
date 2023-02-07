@@ -7,13 +7,14 @@
 
 import UIKit
 import PKHUD
+import iOSDropDown
 
 class SaleViewController: UIViewController {
     
     //product Information
     @IBOutlet weak var tfSearchProduct: UITextField!
     @IBOutlet weak var tfScanQR: UITextField!
-    @IBOutlet weak var tfWalkCustomer: UITextField!
+    @IBOutlet weak var tfWalkCustomer: DropDown!
     @IBOutlet weak var tfInvoice: UITextField!
     //item Information
     @IBOutlet weak var tfSearchYourPro: UITextField!
@@ -44,6 +45,7 @@ class SaleViewController: UIViewController {
     @IBOutlet weak var selectionCVHeight: NSLayoutConstraint!
     
     var selectedIndex = -1
+    var selectedCustomer: Customer?
     var products = [ProductModel]()
     
     // MARK: - Variables
@@ -60,6 +62,40 @@ class SaleViewController: UIViewController {
         selectionCVHeight.constant = 0
     }
     
+    func setupTextFieldRight() {
+        tfAvailQuantity.addLabel(lblText: "Available Quantity", textColor: UIColor.init(named: "appDarkGray") ?? UIColor.lightGray)
+        tfSaleQuantity.addLabel(lblText: "Sale Quantity")
+        tfRate.addLabel(lblText: "Rate")
+        TfDiscount.addLabel(lblText: "Discount %")
+        tfTotal.addLabel(lblText: "Total")
+        tfSaleDiscount.addLabel(lblText: "Sale Discount")
+        tfTotalDiscount.addLabel(lblText: "Total Discount")
+        tfTotalTax.addLabel(lblText: "Total Tax")
+        tfShippingCost.addLabel(lblText: "Shipping Cost")
+        tfGrandCost.addLabel(lblText: "Grand Cost")
+        tfPreviousCost.addLabel(lblText: "Previous Cost")
+        tfChange.addLabel(lblText: "Change")
+        
+        updateDropdown(tfWalkCustomer, dropdownData: Customer.customers.compactMap { $0.name }) { text, index, id in
+            self.selectedCustomer = Customer.customers[index]
+        }
+        
+        if let imgQR = UIImage(named: "qr") {
+            let iv = UIImageView(image: imgQR)
+            tfScanQR.addImage(direction: .Right, image: iv, imageFrame: CGRect(x: 10, y: 10, width: 14, height: 14))
+            iv.addTapGestureRecognizer {
+                
+            }
+        }
+        
+        if let imgAdd = UIImage (named: "add") {
+            let iv = UIImageView(image: imgAdd)
+            tfWalkCustomer.addImage(direction: .Right, image: iv, imageFrame: CGRect(x: 0, y: 0, width: 35, height: 35))
+            iv.addTapGestureRecognizer {
+                self.addCustomerView.fadeIn()
+            }
+        }
+    }
     
     
     // MARK: - Action
@@ -67,6 +103,7 @@ class SaleViewController: UIViewController {
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func fullPaidAction(_ sender: Any) {
     }
     
@@ -82,30 +119,24 @@ class SaleViewController: UIViewController {
         self.addCustomerView.fadeOut()
     }
     
-    func setupTextFieldRight() {
-        tfAvailQuantity.addLabel(lblText: "Available Quantity", textColor: UIColor.init(named: "appDarkGray") ?? UIColor.lightGray)
-        tfSaleQuantity.addLabel(lblText: "Sale Quantity")
-        tfRate.addLabel(lblText: "Rate")
-        TfDiscount.addLabel(lblText: "Discount %")
-        tfTotal.addLabel(lblText: "Total")
-        tfSaleDiscount.addLabel(lblText: "Sale Discount")
-        tfTotalDiscount.addLabel(lblText: "Total Discount")
-        tfTotalTax.addLabel(lblText: "Total Tax")
-        tfShippingCost.addLabel(lblText: "Shipping Cost")
-        tfGrandCost.addLabel(lblText: "Grand Cost")
-        tfPreviousCost.addLabel(lblText: "Previous Cost")
-        tfChange.addLabel(lblText: "Change")
-        if let imgQR = UIImage(named: "qr"), let imgAdd = UIImage (named: "add") {
-            tfScanQR.addImage(direction: .Right, image: imgQR, imageFrame: CGRect(x: 10, y: 10, width: 14, height: 14))
-            tfWalkCustomer.addImage(direction: .Right, image: imgAdd, imageFrame: CGRect(x: 0, y: 0, width: 35, height: 35))
-        }
-        tfWalkCustomer.addTapGestureRecognizer {
-            self.addCustomerView.fadeIn()
-        }
-        tfScanQR.addTapGestureRecognizer {
-            print("QR Code Pressed")
+    @IBAction func addPurchase(_ sender: Any) {
+        
+        let params = ["cutomer_id": selectedCustomer?.id ?? 0,
+                      "invoice_discount": TfDiscount.text ?? "",
+                      "shipping_cost": tfShippingCost.text ?? "",
+                      "paid_amount": "",
+                      "tax_amount": tfTotalTax.text ?? "",
+                      "previous_due_amount": selectedCustomer?.previousDueAmount ?? 0,
+                      "": ""] as [String: Any]
+        Service.savePurchase(with: params) { message, error in
+            if error != nil {
+                self.showalert(title: error?.title ?? "ERP", message: error?.body ?? "Something went wrong.")
+            } else {
+                self.showalert(title: message?.title ?? "ERP", message: message?.body ?? "Something went wrong.")
+            }
         }
     }
+    
 }
 
 extension SaleViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

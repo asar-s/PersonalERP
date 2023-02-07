@@ -43,10 +43,18 @@ class PurchaseViewController: UIViewController {
     func setupDropDown() {
 //          setupAPI()
         
-        updateDropdown(tfSupplier, dropdownData: myData)
-        updateDropdown(tfPaymentType, dropdownData: myData)
-        updateDropdown(tfBank, dropdownData: myData)
-        updateDropdown(tfProductName, dropdownData: myData)
+        updateDropdown(tfSupplier, dropdownData: myData) {  text, index, id in
+            
+        }
+        updateDropdown(tfPaymentType, dropdownData: myData) { text, index, id in
+            
+        }
+        updateDropdown(tfBank, dropdownData: myData) { text, index, id in
+            
+        }
+        updateDropdown(tfProductName, dropdownData: myData) { text, index, id in
+            
+        }
         
     }
     func setupTextField() {

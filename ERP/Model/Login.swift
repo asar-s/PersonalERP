@@ -5,22 +5,27 @@
 
 import Foundation
 
+struct EmptyResponse: Codable {}
+
 struct BaseResponse<T: Codable>: Codable {
     
     let data : T?
     let status : Int?
     let error : String?
+    let message : String?
 
     enum CodingKeys: String, CodingKey {
         case data
         case error
         case status = "status"
+        case message
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try values.decodeIfPresent(Int.self, forKey: .status)
         error = try values.decodeIfPresent(String.self, forKey: .error)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
         data = try values.decodeIfPresent(T.self, forKey: .data)
     }
 

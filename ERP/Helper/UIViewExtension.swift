@@ -179,14 +179,14 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func updateDropdown(_ dropdown: DropDown, dropdownData: [String]) {
+    func updateDropdown(_ dropdown: DropDown, dropdownData: [String], handler: @escaping ((String, Int, Int) -> Void)) {
         dropdown.optionArray = dropdownData
         dropdown.checkMarkEnabled = false
         dropdown.isSearchEnable = false
         dropdown.arrowSize = 10
         dropdown.arrowColor = UIColor(named: "appLighGray") ?? UIColor.darkGray
         dropdown.selectedRowColor = UIColor(named: "appLighGray") ?? UIColor.lightGray
-        
+        dropdown.didSelect(completion: handler)
     }
     func textFieldAlert (_ textfield: UITextField) {
         let textfield = textfield.text
@@ -245,28 +245,24 @@ extension UIView {
             print("no action")
         }
     }
-
-}
-
-extension UIView {
-
-func fadeIn(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in }) {
-   self.alpha = 0.0
-
-   UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
-       self.isHidden = false
-       self.alpha = 1.0
-   }, completion: completion)
-}
-
-func fadeOut(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in }) {
-   self.alpha = 1.0
-
-   UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
-       self.alpha = 0.0
-   }) { (completed) in
-       self.isHidden = true
-       completion(true)
-   }
- }
+    
+    func fadeIn(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in }) {
+        self.alpha = 0.0
+        
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.isHidden = false
+            self.alpha = 1.0
+        }, completion: completion)
+    }
+    
+    func fadeOut(duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in }) {
+        self.alpha = 1.0
+        
+        UIView.animate(withDuration: duration, delay: delay, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.alpha = 0.0
+        }) { (completed) in
+            self.isHidden = true
+            completion(true)
+        }
+    }
 }
