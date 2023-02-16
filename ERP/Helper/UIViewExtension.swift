@@ -186,13 +186,8 @@ extension UIViewController {
         dropdown.arrowSize = 10
         dropdown.arrowColor = UIColor(named: "appLighGray") ?? UIColor.darkGray
         dropdown.selectedRowColor = UIColor(named: "appLighGray") ?? UIColor.lightGray
+        
         dropdown.didSelect(completion: handler)
-    }
-    func textFieldAlert (_ textfield: UITextField) {
-        let textfield = textfield.text
-        if textfield?.isEmpty == true {
-            showalert(message: "Empty Field")
-        }
     }
     
     func isValidEmail(email: String) -> Bool {

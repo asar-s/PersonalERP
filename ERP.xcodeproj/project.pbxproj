@@ -16,6 +16,7 @@
 		18BF60F7295D72500092865A /* SaveCustomerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF60F6295D72500092865A /* SaveCustomerModel.swift */; };
 		18BF60F9295D75D90092865A /* CategoryProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BF60F8295D75D90092865A /* CategoryProductsModel.swift */; };
 		18D11E92295DB5A500089E26 /* SavePurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D11E91295DB5A500089E26 /* SavePurchaseModel.swift */; };
+		18FDAF49299E4FE300EF16A0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FDAF48299E4FE300EF16A0 /* SplashViewController.swift */; };
 		241EE1BD92605DF9D9B0F83A /* Pods_ERP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C171BC05E7BBC04A4CC75E0C /* Pods_ERP.framework */; };
 		2631F66D2953465D004FFE64 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2631F66C2953465D004FFE64 /* Montserrat-Medium.ttf */; };
 		26686D2129547AF400CBF2F2 /* SaleListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26686D2029547AF400CBF2F2 /* SaleListCollectionViewCell.swift */; };
@@ -49,6 +50,7 @@
 		18BF60F6295D72500092865A /* SaveCustomerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCustomerModel.swift; sourceTree = "<group>"; };
 		18BF60F8295D75D90092865A /* CategoryProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductsModel.swift; sourceTree = "<group>"; };
 		18D11E91295DB5A500089E26 /* SavePurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePurchaseModel.swift; sourceTree = "<group>"; };
+		18FDAF48299E4FE300EF16A0 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2631F66C2953465D004FFE64 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		26686D2029547AF400CBF2F2 /* SaleListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleListCollectionViewCell.swift; sourceTree = "<group>"; };
 		26686D2229547C7400CBF2F2 /* SaleSelectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleSelectionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				26B79805295327CE007A3151 /* HomeViewController.swift */,
 				26B798072953281F007A3151 /* PurchaseViewController.swift */,
 				26B7980929532843007A3151 /* SaleViewController.swift */,
+				18FDAF48299E4FE300EF16A0 /* SplashViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				CAD8B333298150E50011FBC1 /* Services.swift in Sources */,
 				18D11E92295DB5A500089E26 /* SavePurchaseModel.swift in Sources */,
 				26686D2129547AF400CBF2F2 /* SaleListCollectionViewCell.swift in Sources */,
+				18FDAF49299E4FE300EF16A0 /* SplashViewController.swift in Sources */,
 				18BCC268295CA45D006DD870 /* APIService.swift in Sources */,
 				18BCC23B295C91DB006DD870 /* UITextFieldExtension.swift in Sources */,
 				26B797ED29530CB1007A3151 /* LoginViewController.swift in Sources */,

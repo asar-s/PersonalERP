@@ -111,15 +111,15 @@ extension EndpointItem: EndPointType {
         switch self {
         case .login:
             return ["x-api-key": "\(self.apiKey)"]
-        case .suppliers, .categories, .supplierProducts, .categoryProducts, .customers:
+        case .suppliers, .categories, .supplierProducts, .categoryProducts, .customers, .resetPassword, .savePurchase, .savePOS, .banks, .saveCustomer:
             return ["x-api-key": "\(self.apiKey)",
                     "token": "\(self.token)"]
         case .userExists:
             return ["Content-Type": "application/json",
                     "X-Requested-With": "XMLHttpRequest",
                     "x-access-token": "someToken"]
-        default:
-            return ["Content-Type": "application/json"]
+//        default:
+//            return ["Content-Type": "application/json"]
 //                    ,
 //                    "X-Requested-With": "XMLHttpRequest"]
         }

@@ -60,6 +60,14 @@ class HomeViewController: UIViewController {
             }
         })
         
+        dispatchGroup.enter()
+        Service.bank { banks, error in
+            dispatchGroup.leave()
+            if error == nil, let baks = banks {
+                ListItemForBank.banks = baks
+            }
+        }
+        
         dispatchGroup.notify(queue: .main) {
             HUD.hide()
         }

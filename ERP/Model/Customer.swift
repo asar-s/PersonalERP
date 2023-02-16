@@ -24,6 +24,12 @@ struct Customer : Codable {
         case previousDueAmount = "previous_due_amount"
     }
     
+    init(from item: ListItem) {
+        self.id = item.id
+        self.name = item.name
+        self.previousDueAmount = 0
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)

@@ -112,18 +112,85 @@ struct Service {
         }
     }
     
-    static func savePurchase(with params: [String: Any], handler: @escaping (_ message: AlertMessage?, _ error: AlertMessage?)->()) {
-        APIManager.shared().call(type: EndpointItem.customers, params: params) { (response: BaseResponse<[EmptyResponse]>?, message: AlertMessage?) in
+    static func savePOS(with params: [String: Any], handler: @escaping (_ message: BaseResponse<EmptyResponse>?, _ error: AlertMessage?)->()) {
+        APIManager.shared().call(type: EndpointItem.savePOS, params: params) { (response: BaseResponse<[EmptyResponse]>?, message: AlertMessage?) in
             if let response = response {
                 if response.status != 200 {
                     handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
                     return
                 } else {
-                    handler(AlertMessage(title: "ERP", body: response.message ?? "Something went wrong"), nil)
+                    handler(nil, AlertMessage(title: "ERP", body: response.message ?? "Something went wrong"))
                 }
             } else {
                 handler(nil, message!)
             }
         }
     }
+    
+    static func resetpassword(with email: String, handler: @escaping (_ message: BaseResponse<EmptyResponse>?, _ error: AlertMessage?)->()) {
+        let params = ["email": email] as? [String: Any]
+        APIManager.shared().call(type: EndpointItem.resetPassword, params: params) { (response: BaseResponse<EmptyResponse>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(nil, AlertMessage(title: "Password Reset", body: response.message ?? "Something went wrong"))
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
+    
+    static func savePurchase(with params: [String: Any], handler: @escaping (_ message: BaseResponse<EmptyResponse>?, _ error: AlertMessage?)->()) {
+        
+        APIManager.shared().call(type: EndpointItem.savePurchase, params: params) { (response: BaseResponse<[EmptyResponse]>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(nil, AlertMessage(title: "ERP", body: response.message ?? "Something went wrong"))
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
+    
+    static func bank(with search: String = "", handler: @escaping (_ banks: [ListItemForBank]?, _ error: AlertMessage?)->()) {
+        var params: [String: Any] = [:]
+        if search != "" {
+            params = ["search_key": search] as [String: Any]
+        }
+        APIManager.shared().call(type: EndpointItem.banks, params: params) { (response: BaseResponse<[ListItemForBank]>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(response.data, nil)
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
+    
+    static func saveCustomer(with params: [String: Any], handler: @escaping (_ customer: ListItem?, _ error: AlertMessage?)->()) {
+        APIManager.shared().call(type: EndpointItem.saveCustomer, params: params) { (response: BaseResponse<ListItem>?, message: AlertMessage?) in
+            if let response = response {
+                if response.status != 200 {
+                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+                    return
+                } else {
+                    handler(response.data, nil)
+                }
+            } else {
+                handler(nil, message!)
+            }
+        }
+    }
+    
 }

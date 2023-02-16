@@ -47,6 +47,7 @@ class SaleViewController: UIViewController {
     var selectedIndex = -1
     var selectedCustomer: Customer?
     var products = [ProductModel]()
+    var paidAmount : Double = 0
     
     // MARK: - Variables
     var counterValue = 1
@@ -97,6 +98,21 @@ class SaleViewController: UIViewController {
         }
     }
     
+    func saveCustomer(){
+        HUD.show(.progress)
+        let params = ["name" : tfCustomerName.text ?? "",
+                      "email" : tfCustomerEmail.text ?? "",
+                      "phone" : tfCustomerMobile.text ?? "",
+                      "address" : textView.text ?? ""] as [String : Any]
+        Service.saveCustomer(with: params) { customer, error in
+            if let cust = customer {
+                self.selectedCustomer = Customer(from: cust)
+                self.tfWalkCustomer.text = cust.name
+            }
+            HUD.flash(.labeledSuccess(title: nil, subtitle: "Customer saved."), delay: 2)
+        }
+    }
+    
     
     // MARK: - Action
     
@@ -117,6 +133,7 @@ class SaleViewController: UIViewController {
     }
     @IBAction func addCustomerSaveAction(_ sender: Any) {
         self.addCustomerView.fadeOut()
+        saveCustomer()
     }
     
     @IBAction func addPurchase(_ sender: Any) {
@@ -124,16 +141,12 @@ class SaleViewController: UIViewController {
         let params = ["cutomer_id": selectedCustomer?.id ?? 0,
                       "invoice_discount": TfDiscount.text ?? "",
                       "shipping_cost": tfShippingCost.text ?? "",
-                      "paid_amount": "",
+                      "paid_amount": paidAmount,
                       "tax_amount": tfTotalTax.text ?? "",
                       "previous_due_amount": selectedCustomer?.previousDueAmount ?? 0,
                       "": ""] as [String: Any]
-        Service.savePurchase(with: params) { message, error in
-            if error != nil {
-                self.showalert(title: error?.title ?? "ERP", message: error?.body ?? "Something went wrong.")
-            } else {
-                self.showalert(title: message?.title ?? "ERP", message: message?.body ?? "Something went wrong.")
-            }
+        Service.savePOS(with: params) { message, error in
+            HUD.flash(.label(error?.body ?? "Something went wrong"), delay: 3)
         }
     }
     

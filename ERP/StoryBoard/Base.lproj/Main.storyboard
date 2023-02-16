@@ -22,6 +22,55 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="pth-TM-SOz">
+            <objects>
+                <viewController id="pkz-P7-KqM" customClass="SplashViewController" customModule="ERP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ydy-XM-qDQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="bwZ-cF-fT4">
+                                <rect key="frame" x="108" y="254" width="159" height="159"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="159" id="dPa-HD-Niw"/>
+                                    <constraint firstAttribute="height" constant="159" id="ucZ-l5-qzz"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="uGb-cV-8AP">
+                                <rect key="frame" x="50" y="626" width="275" height="29"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed In Pakistan By Elite Apps" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8V-cQ-LzA">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="12.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
+                                        <color key="textColor" name="appText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eliteapps.com.pk" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le9-ce-wLF">
+                                        <rect key="frame" x="0.0" y="16.5" width="275" height="12.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                        <color key="textColor" name="appText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Mny-u6-ouT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mny-u6-ouT" firstAttribute="trailing" secondItem="uGb-cV-8AP" secondAttribute="trailing" constant="50" id="AO0-pu-W0j"/>
+                            <constraint firstItem="bwZ-cF-fT4" firstAttribute="centerY" secondItem="Ydy-XM-qDQ" secondAttribute="centerY" id="L8O-nb-SNf"/>
+                            <constraint firstItem="Mny-u6-ouT" firstAttribute="bottom" secondItem="uGb-cV-8AP" secondAttribute="bottom" constant="12" id="NL7-Eb-eUo"/>
+                            <constraint firstItem="uGb-cV-8AP" firstAttribute="leading" secondItem="Mny-u6-ouT" secondAttribute="leading" constant="50" id="dXN-LZ-74Z"/>
+                            <constraint firstItem="bwZ-cF-fT4" firstAttribute="centerX" secondItem="Ydy-XM-qDQ" secondAttribute="centerX" id="uc8-Pq-sTl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sR0-0W-TXb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Epp-N0-hOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168.80000000000001" y="68.815592203898049"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -2261,12 +2310,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BxU-02-lR7"/>
+                        <segue destination="pkz-P7-KqM" kind="relationship" relationship="rootViewController" id="hYW-Lk-t4G"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mrj-yI-erb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.199999999999999" y="68.815592203898049"/>
+            <point key="canvasLocation" x="-610" y="69"/>
         </scene>
     </scenes>
     <designables>
@@ -2275,6 +2324,9 @@
         </designable>
         <designable name="6th-qD-UdG">
             <size key="intrinsicContentSize" width="155.5" height="34"/>
+        </designable>
+        <designable name="9Cc-fo-pto">
+            <size key="intrinsicContentSize" width="146" height="34"/>
         </designable>
         <designable name="LkY-lT-kme">
             <size key="intrinsicContentSize" width="61" height="34"/>
