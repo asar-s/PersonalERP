@@ -14,6 +14,9 @@ struct ProductModel : Codable {
     let serial_no : String?
     let stock : Int?
     let image : String?
+    
+    var isSelected = false
+    var selectedCount = 0
 
     enum CodingKeys: String, CodingKey {
 

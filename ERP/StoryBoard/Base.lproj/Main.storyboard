@@ -1142,7 +1142,6 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="addPurchaseAction:" destination="Vlb-PI-qhn" eventType="touchUpInside" id="UGb-I4-7wg"/>
                                                             <action selector="addPurchaseAction:" destination="HL5-Lj-pZR" eventType="touchUpInside" id="gWN-N2-sVa"/>
                                                         </connections>
                                                     </button>
@@ -2009,10 +2008,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="addNewPurchaseAction:" destination="4bg-YE-Usk" eventType="touchUpInside" id="zxM-mp-WHc"/>
-                                                            <action selector="addPurchase:" destination="4bg-YE-Usk" eventType="touchUpInside" id="ERc-AA-xTe"/>
-                                                            <action selector="addPurchaseAction:" destination="HL5-Lj-pZR" eventType="touchUpInside" id="3R1-c4-lg9"/>
-                                                            <action selector="addPurchaseAction:" destination="Vlb-PI-qhn" eventType="touchUpInside" id="lOT-MY-Ftz"/>
+                                                            <action selector="addPurchase:" destination="4bg-YE-Usk" eventType="touchUpInside" id="NnR-fX-xtz"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="items" translatesAutoresizingMaskIntoConstraints="NO" id="KZh-DO-dfk">

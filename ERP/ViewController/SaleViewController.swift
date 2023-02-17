@@ -44,13 +44,13 @@ class SaleViewController: UIViewController {
     @IBOutlet weak var selectionCollectionView: UICollectionView!
     @IBOutlet weak var selectionCVHeight: NSLayoutConstraint!
     
+    // MARK: - Variables
+    
     var selectedIndex = -1
     var selectedCustomer: Customer?
     var products = [ProductModel]()
+    var selectedProducts = [ProductModel]()
     var paidAmount : Double = 0
-    
-    // MARK: - Variables
-    var counterValue = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,10 +123,6 @@ class SaleViewController: UIViewController {
     @IBAction func fullPaidAction(_ sender: Any) {
     }
     
-    @IBAction func addNewPurchaseAction(_ sender: Any) {
-        pushController(controller: .login, storyboard: .main)
-    }
-    
     @IBAction func addCustomerCancelAction(_ sender: Any) {
         self.addCustomerView.fadeOut()
         
@@ -138,15 +134,31 @@ class SaleViewController: UIViewController {
     
     @IBAction func addPurchase(_ sender: Any) {
         
-        let params = ["cutomer_id": selectedCustomer?.id ?? 0,
-                      "invoice_discount": TfDiscount.text ?? "",
-                      "shipping_cost": tfShippingCost.text ?? "",
+//        var prodDict = [String: Any]()
+        
+        var paramsVar : [String: Any] = [:]
+        
+        var animDictionary: [String: Any] = [:]
+        let count  = selectedProducts.count
+        (0...count - 1).forEach { animDictionary["products[\($0)]"] = selectedProducts[$0] }
+        for (key, value) in animDictionary {
+            paramsVar[key] = value
+        }
+        
+        var params = ["cutomer_id": selectedCustomer?.id ?? 0,
+                      "invoice_discount": TfDiscount.text ?? "0",
+                      "shipping_cost": tfShippingCost.text ?? "0",
                       "paid_amount": paidAmount,
-                      "tax_amount": tfTotalTax.text ?? "",
+                      "tax_amount": tfTotalTax.text ?? "0",
                       "previous_due_amount": selectedCustomer?.previousDueAmount ?? 0,
                       "": ""] as [String: Any]
-        Service.savePOS(with: params) { message, error in
-            HUD.flash(.label(error?.body ?? "Something went wrong"), delay: 3)
+        let merged = params.merging(paramsVar) { (current, _) in current }
+        Service.savePOS(with: merged) { message, error in
+            if error != nil {
+                HUD.flash(.label(message?.message ?? "Product added."), delay: 3)
+            } else {
+                HUD.flash(.label(error?.body ?? "Something went wrong"), delay: 3)
+            }
         }
     }
     
@@ -186,6 +198,14 @@ extension SaleViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             let cellSelection = collectionView.dequeueReusableCell(withReuseIdentifier: "SaleSelectionCollectionViewCell", for: indexPath) as! SaleSelectionCollectionViewCell
             cellSelection.configure(with: products[indexPath.row])
+            
+            if let index = selectedProducts.firstIndex(where: { $0.id ?? "" == products[indexPath.row].id ?? "" }) {
+                cellSelection.ViewQuantity.isHidden = false
+                cellSelection.lblView.backgroundColor = UIColor(named: "appBlue")
+                cellSelection.lblQuantity.text = "\(selectedProducts[index].selectedCount)"
+                products[indexPath.row].selectedCount = selectedProducts[index].selectedCount
+            }
+            
             return cellSelection
         }
     }
@@ -200,10 +220,29 @@ extension SaleViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == selectionCollectionView {
+            
             let cell = collectionView.cellForItem(at: indexPath) as! SaleSelectionCollectionViewCell
+            
+            if let index = selectedProducts.firstIndex(where: { $0.id ?? "" == products[indexPath.row].id ?? "" }) {
+                
+                if products[indexPath.row].selectedCount == selectedProducts[index].stock {
+                    return
+                }
+                selectedProducts[index].isSelected = true
+                selectedProducts[index].selectedCount += 1
+                products[indexPath.row].selectedCount += 1
+                
+            } else {
+                products[indexPath.row].selectedCount += 1
+                var prod = products[indexPath.row]
+                prod.selectedCount = 1
+                prod.isSelected = true
+                selectedProducts.append(prod)
+            }
+            
             cell.ViewQuantity.isHidden = false
             cell.lblView.backgroundColor = UIColor(named: "appBlue")
-            cell.lblQuantity.text = "\(counterValue)"
+            cell.lblQuantity.text = "\(products[indexPath.row].selectedCount)"
             return
         }
     }
