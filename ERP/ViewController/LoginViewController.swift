@@ -16,10 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let email = "jahanzaib@eliteapps.com.pk"
-//        let pass = "12345678"
-//        tfEmail.text = email
-//        tfPassword.text = pass
+        tfEmail.text = "mariuslenovos@gmail.com"
+        tfPassword.text = "Marius@1234"
     }
     
     // MARK: - IBAction
