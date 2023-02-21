@@ -12,32 +12,42 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: - IBOutlets
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
+    var onClick = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTextField()
         tfEmail.text = "mariuslenovos@gmail.com"
         tfPassword.text = "Marius@1234"
     }
     
     // MARK: - IBAction
     @IBAction func LoginAction(_ sender: Any) {
+        
 //        setupTextField()
 //        resetpassword()
-        self.pushController(controller: .home, storyboard: .main)
-    }
-    
-    func setupTextField() {
-        if let imageEmail = UIImage(named: "email"), let imagePassword = UIImage (named: "password") {
-            tfEmail.addImage(direction: .Right, image: imageEmail, imageFrame: CGRect(x: 5, y: 10, width: 15, height: 15))
-            tfPassword.addImage(direction: .Right, image: imagePassword, imageFrame: CGRect(x: 5, y: 10, width: 15, height: 15))
-        }
-        
         if tfEmail.text == "" || tfPassword.text == "" {
             showalert(title: "ERP", message: "Kindly enter your email and password")
         } else {
             setupLoginAPI()
-            autoLogin()
+//            autoLogin()
+        }
+    }
+    
+    @IBAction func showPassword(_ sender: UIButton) {
+        if onClick {
+            onClick = false
+            self.tfPassword.isSecureTextEntry = false
+        } else {
+            onClick = true
+            self.tfPassword.isSecureTextEntry = true
+        }
+    }
+    
+    func setupTextField() {
+        if let imageEmail = UIImage(named: "email") {
+            tfEmail.addImage(direction: .Right, image: imageEmail, imageFrame: CGRect(x: 5, y: 10, width: 15, height: 15))
+//            tfPassword.addImage(direction: .Right, image: imagePassword, imageFrame: CGRect(x: 5, y: 10, width: 15, height: 15))
         }
     }
     
@@ -56,6 +66,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 HUD.flash(.success, delay: 0.5)
                 LoginData.shared = userData
                 self.pushController(controller: .home, storyboard: .main)
+                let obj = try? PropertyListEncoder().encode(userData)
+                UserDefaults.standard.setValue(obj, forKey: "UserInfo")
+                let data = UserDefaults.standard.value(forKey: "UserInfo") as! Data
+                let obj1 = try? PropertyListDecoder().decode(LoginData.self, from: data)
+                print(obj1!)
                 UserDefaults.standard.set(true, forKey: "isLoggedIn")
                 UserDefaults.standard.synchronize()
             } else {
@@ -65,20 +80,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func autoLogin (){
-        let alert = UIAlertController(title: "Auto Saving", message: "Do You Want to Save Login Details", preferredStyle: .alert)
-        let yesbtn = UIAlertAction(title: "Yes", style: .default) { (action) in
             HUD.show(.progress)
             UserDefaults.standard.set(self.tfEmail.text, forKey: "Email")
             UserDefaults.standard.set(self.tfPassword.text, forKey: "Password")
             HUD.hide()
-            self.pushController(controller: .home, storyboard: .main)
-        }
-        let nobtn = UIAlertAction(title: "No", style: .destructive) { (action) in
-            self.pushController(controller: .home, storyboard: .main)
-        }
-        alert.addAction(yesbtn)
-        alert.addAction(nobtn)
-        present(alert, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

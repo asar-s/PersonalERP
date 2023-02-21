@@ -140,9 +140,10 @@ class SaleViewController: UIViewController {
         
         var animDictionary: [String: Any] = [:]
         let count  = selectedProducts.count
-        (0...count - 1).forEach { animDictionary["products[\($0)]"] = selectedProducts[$0] }
+        (0...count - 1).forEach { animDictionary["products[\($0)]"] = selectedProducts[$0]}
         for (key, value) in animDictionary {
             paramsVar[key] = value
+            
         }
         
         var params = ["cutomer_id": selectedCustomer?.id ?? 0,
@@ -155,9 +156,9 @@ class SaleViewController: UIViewController {
         let merged = params.merging(paramsVar) { (current, _) in current }
         Service.savePOS(with: merged) { message, error in
             if error != nil {
-                HUD.flash(.label(message?.message ?? "Product added."), delay: 3)
-            } else {
                 HUD.flash(.label(error?.body ?? "Something went wrong"), delay: 3)
+            } else {
+                HUD.flash(.label(message?.message ?? "Product added."), delay: 3)
             }
         }
     }

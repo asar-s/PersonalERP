@@ -148,6 +148,6 @@ class PurchaseViewController: UIViewController {
     @IBAction func addPurchaseAction(_ sender: Any) {
         savePurchase()
 //        setupTextField()
-        pushController(controller: .login, storyboard: .main)
+        pushController(controller: .home, storyboard: .main)
     }
 }

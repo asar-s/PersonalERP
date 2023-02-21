@@ -134,6 +134,14 @@
                                 <color key="textColor" name="appText"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5P-aI-pUW">
+                                <rect key="frame" x="294.5" y="383" width="15" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="password"/>
+                                <connections>
+                                    <action selector="showPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WEg-2f-Sae"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFV-PF-AYP">
                                 <rect key="frame" x="56.5" y="496.5" width="262.5" height="41"/>
                                 <color key="backgroundColor" name="appBlue"/>
@@ -158,9 +166,11 @@
                         <color key="backgroundColor" name="appBackground"/>
                         <constraints>
                             <constraint firstItem="PFV-PF-AYP" firstAttribute="top" secondItem="9Ih-KE-OhL" secondAttribute="bottom" constant="63" id="0Ep-lt-iaI"/>
+                            <constraint firstItem="g5P-aI-pUW" firstAttribute="centerY" secondItem="JLw-bw-GbX" secondAttribute="centerY" id="0s2-Xn-o6F"/>
                             <constraint firstItem="C2m-gF-VJa" firstAttribute="top" secondItem="sDW-hE-gFV" secondAttribute="bottom" constant="88" id="7lR-wi-gEs"/>
                             <constraint firstItem="9Ih-KE-OhL" firstAttribute="top" secondItem="C2m-gF-VJa" secondAttribute="bottom" constant="9" id="b0X-hA-8S6"/>
                             <constraint firstItem="PFV-PF-AYP" firstAttribute="centerX" secondItem="n4M-Js-6Nf" secondAttribute="centerX" id="bCV-hj-O90"/>
+                            <constraint firstItem="g5P-aI-pUW" firstAttribute="trailing" secondItem="JLw-bw-GbX" secondAttribute="trailing" constant="-15" id="ben-jr-0Pk"/>
                             <constraint firstItem="C2m-gF-VJa" firstAttribute="centerX" secondItem="n4M-Js-6Nf" secondAttribute="centerX" id="j1F-jD-O4u"/>
                             <constraint firstItem="9Ih-KE-OhL" firstAttribute="trailing" secondItem="C2m-gF-VJa" secondAttribute="trailing" id="nre-Hq-UXI"/>
                             <constraint firstItem="sDW-hE-gFV" firstAttribute="centerX" secondItem="n4M-Js-6Nf" secondAttribute="centerX" id="rAz-Q7-I43"/>
@@ -2336,6 +2346,7 @@
         <image name="car" width="288" height="288"/>
         <image name="items" width="16" height="16"/>
         <image name="label" width="15" height="15"/>
+        <image name="password" width="15" height="10"/>
         <image name="sidebar" width="60" height="40"/>
         <image name="splash" width="159" height="159"/>
         <image name="table" width="341" height="298.5"/>
