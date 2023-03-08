@@ -61,6 +61,70 @@ class APIManager {
         }
     }
     
+    // for multipart form Data
+    func uploadFormDataForString<T: Codable>(type: EndPointType, params: Parameters, handler: @escaping (T?, _ error: AlertMessage?)->()) {
+        
+        self.sessionManager.upload(
+            multipartFormData: { multipartFormData in
+                for (key, value) in params {
+                    multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+                }
+            },
+            to: type.url,
+            headers: type.headers
+        ).responseDecodable(of: T.self) { data in
+            
+            print("Response for \(type.url) :", String(data: data.data ?? Data(), encoding: .utf8) ?? "")
+            
+            switch data.result {
+            case .success(_):
+                let response = try? data.result.get()
+                handler(response, nil)
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                handler(nil, AlertMessage(title: "Oops!", body: error.localizedDescription))
+                break
+            }
+        }
+        
+//        self.sessionManager.upload(
+//            multipartFormData: { multipartFormData in
+//                for (key, value) in params {
+//                    if let string = value as? String {
+//                        multipartFormData.append(string.data(using: .utf8)!, withName: key)
+//                    }
+//                }
+//            },
+//            to: type.url
+//        ) { response in
+//
+//        }
+        
+//        self.sessionManager.request(type.url,
+//                                    method: type.httpMethod,
+//                                    parameters: params,
+//                                    encoding: type.encoding,
+//                                    headers: type.headers)
+////        .validate(statusCode: 200..<500)
+//        .responseDecodable(of: T.self) { data in
+//
+//            print("Response for \(type.url) :", String(data: data.data ?? Data(), encoding: .utf8) ?? "")
+//
+//            switch data.result {
+//            case .success(_):
+//                let response = try? data.result.get()
+//                handler(response, nil)
+//                break
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//                handler(nil, AlertMessage(title: "Oops!", body: error.localizedDescription))
+//                break
+//            }
+//        }
+    }
+    
+    
     // MARK: - handling for the empty response from server -
     
     func call(type: EndPointType, params: Parameters? = nil, handler: @escaping (()?, _ error: AlertMessage?)->()) {

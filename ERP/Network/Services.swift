@@ -113,7 +113,7 @@ struct Service {
     }
     
     static func savePOS(with params: [String: Any], handler: @escaping (_ message: BaseResponse<EmptyResponse>?, _ error: AlertMessage?)->()) {
-        APIManager.shared().call(type: EndpointItem.savePOS, params: params) { (response: BaseResponse<[EmptyResponse]>?, message: AlertMessage?) in
+        APIManager.shared().uploadFormDataForString(type: EndpointItem.savePOS, params: params) { (response: BaseResponse<[EmptyResponse]>?, message: AlertMessage?) in
             if let response = response {
                 if response.status != 200 {
                     handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
@@ -125,6 +125,18 @@ struct Service {
                 handler(nil, message!)
             }
         }
+//        APIManager.shared().call(type: EndpointItem.savePOS, params: params) { (response: BaseResponse<[EmptyResponse]>?, message: AlertMessage?) in
+//            if let response = response {
+//                if response.status != 200 {
+//                    handler(nil, AlertMessage(title: "Oops!", body: response.error ?? "Something went wrong"))
+//                    return
+//                } else {
+//                    handler(nil, AlertMessage(title: "ERP", body: response.message ?? "Something went wrong"))
+//                }
+//            } else {
+//                handler(nil, message!)
+//            }
+//        }
     }
     
     static func resetpassword(with email: String, handler: @escaping (_ message: BaseResponse<EmptyResponse>?, _ error: AlertMessage?)->()) {

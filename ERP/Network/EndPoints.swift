@@ -55,7 +55,7 @@ extension EndpointItem: EndPointType {
     
     var baseURL: String {
         switch APIManager.networkEnviroment {
-        case .dev: return "https://5m2t.org/api/"
+        case .dev: return "https://roomely.pw/api/"
         case .production: return ""
         case .stage: return ""
         }

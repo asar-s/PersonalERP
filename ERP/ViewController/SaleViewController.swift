@@ -50,7 +50,7 @@ class SaleViewController: UIViewController {
     var selectedCustomer: Customer?
     var products = [ProductModel]()
     var selectedProducts = [ProductModel]()
-    var paidAmount : Double = 0
+    var paidAmount : Int = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,26 +133,33 @@ class SaleViewController: UIViewController {
     }
     
     @IBAction func addPurchase(_ sender: Any) {
-        
+        HUD.show(.progress)
 //        var prodDict = [String: Any]()
         
         var paramsVar : [String: Any] = [:]
         
-        var animDictionary: [String: Any] = [:]
+//        var animDictionary: [String: String] = [:]
         let count  = selectedProducts.count
-        (0...count - 1).forEach { animDictionary["products[\($0)]"] = selectedProducts[$0]}
-        for (key, value) in animDictionary {
-            paramsVar[key] = value
-            
+//        (0...count - 1).forEach { animDictionary["products[\($0)]"] = selectedProducts[$0]}
+//        for (key, value) in animDictionary {
+//            paramsVar[key] = value
+//
+//        }
+        
+        for (index, item) in selectedProducts.enumerated() {
+            paramsVar["products[\(index)][product_id]"] = item.id ?? 0
+            paramsVar["products[\(index)][quantity]"] = 1
+            paramsVar["products[\(index)][price]"] = Int(item.price ?? 0)
+            paramsVar["products[\(index)][discount]"] = 0
         }
         
-        var params = ["cutomer_id": selectedCustomer?.id ?? 0,
+        let params = ["cutomer_id": "\(selectedCustomer?.id ?? 0)",
                       "invoice_discount": TfDiscount.text ?? "0",
                       "shipping_cost": tfShippingCost.text ?? "0",
                       "paid_amount": paidAmount,
                       "tax_amount": tfTotalTax.text ?? "0",
-                      "previous_due_amount": selectedCustomer?.previousDueAmount ?? 0,
-                      "": ""] as [String: Any]
+                      "previous_due_amount": "\(selectedCustomer?.previousDueAmount ?? 0)",
+                      "": ""] as [String : Any]
         let merged = params.merging(paramsVar) { (current, _) in current }
         Service.savePOS(with: merged) { message, error in
             if error != nil {
@@ -161,6 +168,7 @@ class SaleViewController: UIViewController {
                 HUD.flash(.label(message?.message ?? "Product added."), delay: 3)
             }
         }
+        pushController(controller: .home, storyboard: .main)
     }
     
 }
